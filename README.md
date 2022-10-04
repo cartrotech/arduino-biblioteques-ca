@@ -1,3 +1,3 @@
 # arduino-biblioteques-ca
 
-Traducci
+Traducció al català/valencià de biblioteques d'arduino.
