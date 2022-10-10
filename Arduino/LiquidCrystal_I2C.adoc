@@ -42,9 +42,9 @@ Algunes de les funcions enumerades provenen de Arduino http://playground.arduino
 === Controls de pantalla
 
 * <<noDisplay, noDisplay()>>
-* <<off, off()>>
+* <<noDisplay, off()>>
 * <<display, display()>>
-* <<on, on()>>
+* <<display, on()>>
 * <<scrollDisplayLeft, scrollDisplayLeft()>>
 * <<scorllDisplayRight, scrollDisplayRight()>>
 * <<leftToRight, leftToRight()>>
@@ -401,26 +401,21 @@ configurada anteriorment.
 
 ''''
 
-=== [#anchor-13]####noDisplay() / display()
+[#noDisplay]
+=== noDisplay()
 
 ==== Descripció
 
-Apaga la pantalla ràpidament. Si la pantalla no té una opció per a
-encendre la pantalla, la funció simplement encén la llum de fons. /
-Encén la pantalla ràpidament. Si la pantalla no té una opció per a
-apagar la pantalla, la funció simplement apaga la llum de fons.
+Apaga la pantalla ràpidament. Si la pantalla no té una opció per a encendre la pantalla, la funció simplement encén la llum de fons. 
 
 ==== Sintaxi
 
-_lcd.noDisplay();_
+[source, Arduino]
+----
+lcd.noDisplay();
 
-_lcd.off();_
-
-__
-
-_lcd.display();_
-
-_lcd.on();_
+lcd.off();
+----
 
 ==== Paràmetres
 
@@ -430,21 +425,58 @@ _lcd.on();_
 
 * Cap
 
+==== Veure també
 
-=== [#anchor-14]####[#anchor-15]####scrollDisplayLeft() / scrollDisplayRight()
+* <<noDisplay, noDisplay()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+[#display]
+=== display()
 
 ==== Descripció
 
-Desplaça el text de la pantalla cap a l'esquerra / dreta sense canviar
-la RAM. La funció desplaça el búfer complet de 40 caràcters. Si
-imprimeix 40 caràcters en una fila i comença a desplaçar-se, obtindrà un
+Encén la pantalla ràpidament. Si la pantalla no té una opció per a apagar la pantalla, la funció simplement apaga la llum de fons.
+
+==== Sintaxi
+
+[source, Arduino]
+----
+lcd.display();
+
+lcd.on();
+----
+
+==== Paràmetres
+
+* Cap
+
+==== Retorn
+
+* Cap
+
+==== Veure també
+
+* <<display, display()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+[scrollDisplayLeft]
+=== scrollDisplayLeft()
+
+==== Descripció
+
+Desplaça el text de la pantalla cap a l'esquerra sense canviar la RAM. La funció desplaça el búfer complet de 40 caràcters. Si imprimeix 40 caràcters en una fila i comença a desplaçar-se, obtindrà un
 bàner en moviment continu en una fila, especialment en un 1602 LCD.
 
 ==== Sintaxi
 
-_lcd.scrollDisplayLeft();_
-
-_lcd.scrollDisplayRight();_
+[source, Arduino]
+----
+lcd.scrollDisplayLeft();
+----
 
 ==== Paràmetres
 
@@ -453,6 +485,43 @@ _lcd.scrollDisplayRight();_
 ==== Retorn
 
 * Cap
+
+==== Veure també
+
+* <<scrollDisplayRight, scrollDisplayRight()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+[#scrollDisplayRight]
+=== scrollDisplayRight()
+
+==== Descripció
+
+Desplaça el text de la pantalla cap a la dreta sense canviar la RAM. La funció desplaça el búfer complet de 40 caràcters. Si imprimeix 40 caràcters en una fila i comença a desplaçar-se, obtindrà un
+bàner en moviment continu en una fila, especialment en un 1602 LCD.
+
+==== Sintaxi
+
+[source, Arduino]
+----
+lcd.scrollDisplayRight();
+----
+
+==== Paràmetres
+
+* Cap
+
+==== Retorn
+
+* Cap
+
+==== Veure també
+
+* <<scrollDisplayLeft, scrollDisplayLeft()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
 
 === [#anchor-16]####[#anchor-17]####leftToRight() - rightToLeft()
 
