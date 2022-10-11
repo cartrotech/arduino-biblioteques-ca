@@ -1,5 +1,7 @@
 = LiquidCrystal_I2C
 
+[small]#Traducció de https://github.com/mrkaleArduinoLib/LiquidCrystal_I2C#
+
 == Introducció
 
 És la reimplementació de la biblioteca LCD Arduino estàndard,
@@ -611,7 +613,7 @@ Apaga la llum de fons
 
 ==== Veure també
 
-* <<backlight, backlight>>
+* <<backlight, backlight()>>
 * <<Interfície, Tornar a interfície>>
 
 ''''
@@ -636,28 +638,22 @@ Apaga la llum de fons
 
 ==== Veure també
 
-* <<noBacklight, noBacklight>>
+* <<noBacklight, noBacklight()>>
 * <<Interfície, Tornar a interfície>>
 
 ''''
 
-=== [#anchor-23]####[#anchor-24]####noCursor() / [#anchor-25]####cursor()
+=== [#noCursor]#noCursor()#
 
 ==== Descripció
 
-Apaga el cursor de bloc. / Encén el cursor de bloc.
+Apaga el cursor de bloc.
 
 ==== Sintaxi
 
-_lcd.noCursor();_
+`lcd.noCursor();`
 
-_lcd.cursor_off();_
-
-__
-
-_lcd.Cursor();_
-
-_lcd.cursor_on();_
+`lcd.cursor_off();`
 
 ==== Paràmetres
 
@@ -667,23 +663,24 @@ _lcd.cursor_on();_
 
 * Cap
 
-=== [#anchor-26]####noBlink() / [#anchor-27]####blink()
+==== Veure també
+
+* <<cursor, cursor()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+=== [#cursor]#cursor()#
 
 ==== Descripció
 
-Apaga / encén el cursor de subratllat parpadejant.
+Encén el cursor de bloc.
 
 ==== Sintaxi
 
-_lcd.noBlink();_
+`lcd.Cursor();`
 
-_lcd.blink_off();_
-
-__
-
-_lcd.blink();_
-
-_lcd.blink_on();_
+`lcd.cursor_on();`
 
 ==== Paràmetres
 
@@ -693,7 +690,68 @@ _lcd.blink_on();_
 
 * Cap
 
-=== [#anchor-28]####setCursor()
+==== Veure també
+
+* <<noCursor, noCursor()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+=== [#noBlink]#noBlink()#
+
+==== Descripció
+
+Apaga el cursor de subratllat parpadejant.
+
+==== Sintaxi
+
+`lcd.noBlink();`
+
+`lcd.blink_off();`
+
+==== Paràmetres
+
+* Cap
+
+==== Retorn
+
+* Cap
+
+==== Veure també
+
+* <<blink, blink()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+=== [#blink]#blink()#
+
+==== Descripció
+
+Encén el cursor de subratllat parpadejant.
+
+==== Sintaxi
+
+`lcd.blink();`
+
+`lcd.blink_on();`
+
+==== Paràmetres
+
+* Cap
+
+==== Retorn
+
+* Cap
+
+==== Veure també
+
+* <<noBlink, noBlink()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+=== [#setCursor]#setCursor()#
 
 ==== Descripció
 
@@ -701,7 +759,7 @@ Posiciona el cursor en les coordenades indicades
 
 ==== Sintaxi
 
-_lcd.setCursor(uint8_t col, uint8_t row);_
+`lcd.setCursor(uint8_t col, uint8_t row);`
 
 ==== Paràmetres
 
@@ -716,18 +774,22 @@ _lcd.setCursor(uint8_t col, uint8_t row);_
 
 * Cap
 
-=== [#anchor-29]####init_bargraph()
+==== Veure també
+
+* <<home, home()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+=== [#init_bargraph]#init_bargraph()#
 
 ==== Descripció
 
-Inicialitza un gràfic de barres particular. La funció crea un conjunt de
-caràcters personalitzats per a mostrar gràfics de barres. Alguns dels
-primers caràcters personalitzats actuals (5 o 8) se sobreescriuran
-segons la mena de gràfic.
+Inicialitza un gràfic de barres particular. La funció crea un conjunt de caràcters personalitzats per a mostrar gràfics de barres. Alguns dels primers caràcters personalitzats actuals (5 o 8) se sobreescriuran segons la mena de gràfic.
 
 ==== Sintaxi
 
-_lcd.init_bargraph(uint8_t graphtype);_
+`lcd.init_bargraph(uint8_t graphtype);`
 
 ==== Paràmetres
 
@@ -747,64 +809,56 @@ inicialització.
 ** 0: èxit
 ** 1: error, p. ex., Tipus de gràfic no reconegut
 
-=== [#anchor-30]####draw_horizontal_graph()
+==== Veure també
+
+* <<draw_horizontal_graph, draw_horizontal_graph()>>
+* <<draw_vertical_graph, draw_vertical_graph()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+=== [#draw_horizontal_graph]#draw_horizontal_graph()#
 
 ==== Descripció
 
-Mostra un gràfic horitzontal des de la posició desitjada del cursor amb
-el valor d'entrada.
+Mostra un gràfic horitzontal des de la posició desitjada del cursor amb el valor d'entrada.
 
-* El gràfic de barres es compon eventualment de caràcters rectangulars
-complets sòlids, excepte el caràcter final amb barres verticals
-reduïdes. El valor del gràfic de barres es mostra com un nombre
+* El gràfic de barres es compon eventualment de caràcters rectangulars complets sòlids, excepte el caràcter final amb barres verticals reduïdes. El valor del gràfic de barres es mostra com un nombre
 equivalent de canonades en el segment del gràfic.
-* El gràfic de línies es compon d'una canonada que travessa una fila de
-LCD. El valor del gràfic de barres es mostra com una canonada en la
-posició de punt equivalent en el segment del gràfic.
-* La funció està sobrecarregada per la mena de dades d'un valor de
-gràfic mostrat, la qual cosa determina la seua forma.
-* El valor zero del gràfic es mostra com la canonada de l'extrem
-esquerre en el segment del gràfic degut al recompte des de 0, de manera
-que el gràfic sempre mostra alguna cosa.
+* El gràfic de línies es compon d'una canonada que travessa una fila de LCD. El valor del gràfic de barres es mostra com una canonada en la posició de punt equivalent en el segment del gràfic.
+* La funció està sobrecarregada per la mena de dades d'un valor de gràfic mostrat, la qual cosa determina la seua forma.
+* El valor zero del gràfic es mostra com la canonada de l'extrem esquerre en el segment del gràfic degut al recompte des de 0, de manera que el gràfic sempre mostra alguna cosa.
 
 ==== Sintaxi
 
-_lcd.draw_horizontal_graph(uint8_t row, uint8_t column, uint8_t len,
-uint8_t pixel_col_end);_
+`lcd.draw_horizontal_graph(uint8_t row, uint8_t column, uint8_t len,
+uint8_t pixel_col_end);`
 
-_lcd.draw_horizontal_graph(uint8_t row, uint8_t column, uint8_t len,
-uint16_t percentage);_
+`lcd.draw_horizontal_graph(uint8_t row, uint8_t column, uint8_t len,
+uint16_t percentage);`
 
-_lcd.draw_horizontal_graph(uint8_t row, uint8_t column, uint8_t len,
-float ratio);_
+`lcd.draw_horizontal_graph(uint8_t row, uint8_t column, uint8_t len,
+float ratio);`
 
 ==== Paràmetres
 
-* *row*: Posició de fila del segment de gràfic comptant des de 0 fins al
-nombre físic de files.
+* *row*: Posició de fila del segment de gràfic comptant des de 0 fins al nombre físic de files.
 **  Valors vàlids: sencer no negatiu 0 a files - 1 del constructor
 **  Valor predeterminat: cap
 
-*  *col*: Posició de la columna del segment del gràfic comptant des de 0
-nombre físic de columnes en una fila.
+*  *col*: Posició de la columna del segment del gràfic comptant des de 0 nombre físic de columnes en una fila.
 **  Valors vàlids: sencer no negatiu 0 a cols - 1 del constructor
 ** Valor predeterminat: cap
-* *len*: Longitud d'un segment de gràfic en caràcters limitada a les
-columnes físiques restants des de la posició de la columna inicial.
+* *len*: Longitud d'un segment de gràfic en caràcters limitada a les columnes físiques restants des de la posició de la columna inicial.
 **  Valors vàlids: sencer no negatiu 0 a cols - col del constructor
 **  Valor predeterminat: cap
-* *píxel_col_end*: Valor mostrat en canonades (punts horitzontals)
-comptant des de 0 fins al nombre de canonades del segment del gràfic. Un
-esbós ha de calcular el nombre de canonades de segment per a assigne un
-valor d'aplicació al valor mostrat.
+* *píxel_col_end*: Valor mostrat en canonades (punts horitzontals) comptant des de 0 fins al nombre de canonades del segment del gràfic. Un esbós ha de calcular el nombre de canonades de segment per a assigne un valor d'aplicació al valor mostrat.
 **  Valors vàlids: sencer no negatiu de 0 a 5 * len
 **  Valor predeterminat: cap
-* *percentatge*: valor mostrat en percentatge de la longitud d'un
-segment de gràfic. El valor acceptat s'arredoneix a un enter per cent.
+* *percentatge*: valor mostrat en percentatge de la longitud d'un segment de gràfic. El valor acceptat s'arredoneix a un enter per cent.
 **  Valors vàlids: sencer no negatiu de 0 a 100
 **  Valor predeterminat: cap
-*  *ràtio*: valor mostrat com un fragment de la longitud d'un segment de
-gràfic.
+*  *ràtio*: valor mostrat com un fragment de la longitud d'un segment de gràfic.
 **  Valors vàlids: decimal no negatiu de 0 a 1.
 **  Valor predeterminat: cap
 
@@ -812,54 +866,51 @@ gràfic.
 
 * Cap
 
-=== [#anchor-31]####[#anchor-32]####draw_vertical_graph()
+==== Veure també
+
+* <<init_bargraph, init_bargraph()>>
+* <<draw_vertical_graph, draw_vertical_graph()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+=== [#draw_vertical_graph]#draw_vertical_graph()#
 
 ==== Descripció
 
-Mostra la barra vertical des de la posició desitjada del cursor amb el
-valor d'entrada.
+Mostra la barra vertical des de la posició desitjada del cursor amb el valor d'entrada.
 
-* El gràfic de barres es compon eventualment de caràcters rectangulars
-complets sòlids, excepte el caràcter final amb guions horitzontals
-reduïts. El valor del gràfic de barres es mostra com un nombre
+* El gràfic de barres es compon eventualment de caràcters rectangulars complets sòlids, excepte el caràcter final amb guions horitzontals reduïts. El valor del gràfic de barres es mostra com un nombre
 equivalent de guions en el segment del gràfic.
-*  La funció està sobrecarregada per la mena de dades d'un valor de
-gràfic mostrat, la qual cosa determina la seua forma.
+*  La funció està sobrecarregada per la mena de dades d'un valor de gràfic mostrat, la qual cosa determina la seua forma.
 
 ==== Sintaxi
 
-_ lcd.draw_vertical_graph(uint8_t row, uint8_t column, uint8_t len,
-uint8_t pixel_row_end);_
+`lcd.draw_vertical_graph(uint8_t row, uint8_t column, uint8_t len,
+uint8_t pixel_row_end);`
 
-_ lcd.draw_vertical_graph(uint8_t row, uint8_t column, uint8_t len,
-uint16_t percentage);_
+`lcd.draw_vertical_graph(uint8_t row, uint8_t column, uint8_t len,
+uint16_t percentage);`
 
-_ lcd.draw_vertical_graph(uint8_t row, uint8_t column, uint8_t len,
-float ratio);_
+`lcd.draw_vertical_graph(uint8_t row, uint8_t column, uint8_t len,
+float ratio);`
 
 ==== Paràmetres
 
-* *row*: Posició de fila del segment de gràfic comptant des de 0 fins al
-nombre físic de files.
+* *row*: Posició de fila del segment de gràfic comptant des de 0 fins al nombre físic de files.
 **  Valors vàlids: sencer no negatiu 0 a files - 1 del constructor
 **  Valor predeterminat: cap
 
-*  *col*: Posició de la columna del segment del gràfic comptant des de 0
-nombre físic de columnes en una fila.
+*  *col*: Posició de la columna del segment del gràfic comptant des de 0 nombre físic de columnes en una fila.
 **  Valors vàlids: sencer no negatiu 0 a cols - 1 del constructor
 ** Valor predeterminat: cap
-* *len*: Longitud d'un segment de gràfic en caràcters limitada a les
-columnes físiques restants des de la posició de la columna inicial.
+* *len*: Longitud d'un segment de gràfic en caràcters limitada a les columnes físiques restants des de la posició de la columna inicial.
 **  Valors vàlids: sencer no negatiu 0 a cols - col del constructor
 **  Valor predeterminat: cap
-* *píxel_col_end*: Valor mostrat en canonades (punts horitzontals)
-comptant des de 0 fins al nombre de canonades del segment del gràfic. Un
-esbós ha de calcular el nombre de canonades de segment per a assigne un
-valor d'aplicació al valor mostrat.
+* *píxel_col_end*: Valor mostrat en canonades (punts horitzontals) comptant des de 0 fins al nombre de canonades del segment del gràfic. Un esbós ha de calcular el nombre de canonades de segment per a assigne un valor d'aplicació al valor mostrat.
 **  Valors vàlids: sencer no negatiu de 0 a 5 * len
 **  Valor predeterminat: cap
-* *percentatge*: valor mostrat en percentatge de la longitud d'un
-segment de gràfic. El valor acceptat s'arredoneix a un enter per cent.
+* *percentatge*: valor mostrat en percentatge de la longitud d'un segment de gràfic. El valor acceptat s'arredoneix a un enter per cent.
 **  Valors vàlids: sencer no negatiu de 0 a 100
 **  Valor predeterminat: cap
 *  *ràtio*: valor mostrat com un fragment de la longitud d'un segment de
@@ -871,48 +922,58 @@ gràfic.
 
 * Cap
 
-=== [#anchor-33]####createChar()
+==== Veure també
+
+* <<init_bargraph, init_bargraph()>>
+* <<draw_horizontal_graph, draw_horizontal_graph()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+=== [#createChar]#createChar()#
 
 ==== Descripció
 
-Ompli les primeres 8 ubicacions de RAM del generador de caràcters
-(CGRAM) amb caràcters personalitzats.
+Ompli les primeres 8 ubicacions de RAM del generador de caràcters (CGRAM) amb caràcters personalitzats.
 
 ==== Sintaxi
 
-_lcd.createChar(uint8_t, uint8_t[]);_
+`lcd.createChar(uint8_t, uint8_t[]);`
 
-_lcd.load_custom_character(uint8_t char_num, uint8_t *rows);_
+`lcd.load_custom_character(uint8_t char_num, uint8_t *rows);`
 
 ==== Paràmetres
 
-* *char_num*: posició d'un caràcter personalitzat en CGRAM per a
-caràcters personalitzats.
+* *char_num*: posició d'un caràcter personalitzat en CGRAM per a caràcters personalitzats.
 ** Valors vàlids: 0 - 7
 ** Valor predeterminat: cap
 * *uint8_t []*: matriu de definicions de caràcters personalitzats.
-** Valors vàlids: patrons de bytes de fila de caràcters des de la part
-superior del char.
+** Valors vàlids: patrons de bytes de fila de caràcters des de la part superior del char.
 *** Longitud de matriu de 8 bytes per a caràcters de 5x8.
 *** Longitud de la matriu 10 bytes per a 5x10 caràcters.
 ** Valor predeterminat: cap
-* **rows*: punter a la matriu de definicions de caràcters
-personalitzats.
+* **rows*: punter a la matriu de definicions de caràcters personalitzats.
 
 ==== Retorn
 
 * Cap
 
-=== [#anchor-34]####command()
+==== Veure també
+
+* <<init_bargraph, init_bargraph()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+=== [#command]#command()#
 
 ==== Descripció
 
-Envia un comando a la pantalla. És útil per a comandos no compatibles
-amb la biblioteca.
+Envia un comando a la pantalla. És útil per a comandos no compatibles amb la biblioteca.
 
 ==== Sintaxi
 
-_lcd.command(uint8_t value);_
+`lcd.command(uint8_t value);`
 
 ==== Paràmetres
 
@@ -924,7 +985,10 @@ _lcd.command(uint8_t value);_
 
 * Cap
 
-== [#anchor-35]####Referencies
+==== Veure també
 
-[arabic]
-. https://github.com/mrkaleArduinoLib/LiquidCrystal_I2C
+* <<write, write()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
