@@ -111,10 +111,7 @@ Tingueu en compte, però, que el restabliment de l'Arduino no reinicia la pantal
 
 ==== Sintaxi
 
-[source, Arduino]
-----
-LiquidCrystal_I2C ObjecteLCD(uint8_t addr, uint8_t cols, uint8_t rows);
-----
+`LiquidCrystal_I2C ObjecteLCD(uint8_t addr, uint8_t cols, uint8_t rows);`
 
 ==== Paràmetres
 
@@ -142,10 +139,7 @@ de la pantalla LCD.
 
 ==== Exemple
 
-[source, Arduino]
-----
-lcd = LiquidCrystal_I2C(0x27, 16, 2);
-----
+`lcd = LiquidCrystal_I2C(0x27, 16, 2);`
 
 ==== Veure també
 
@@ -162,10 +156,7 @@ Inicialitza la pantalla LCD amb els seus paràmetres geomètrics específics.
 
 ==== Sintaxi
 
-[source, Arduino]
-----
-void lcd.begin(uint8_t cols, uint8_t rows, uint8_t charsize = LCD_5x8DOTS);
-----
+`lcd.begin(uint8_t cols, uint8_t rows, uint8_t charsize = LCD_5x8DOTS);`
 
 ==== Paràmetres
 
@@ -204,10 +195,7 @@ inicialitza la pantalla amb els valors posats en el <<LiquidCrystal_I2C, constru
 
 ==== Sintaxi
 
-[source, Arduino]
-----
-lcd.init();
-----
+`lcd.init();`
 
 ==== Paràmetres
 
@@ -238,12 +226,9 @@ Funció per a netejar tota la pantalla LCD o només una part d'una fila.
 
 ==== Sintaxi
 
-[source, Arduino]
-----
-lcd.clear();
+`lcd.clear();`
 
-lcd.clear(uint8_t rowStart, uint8_t colStart = 0, uint8_t colCnt = 255);
-----
+`lcd.clear(uint8_t rowStart, uint8_t colStart = 0, uint8_t colCnt = 255);`
 
 ==== Paràmetres
 
@@ -278,10 +263,7 @@ Col·loca el cursor en la posició inicial (0, 0) i deixa els caràcters mostrat
 
 ==== Sintaxi
 
-[source, Arduino]
-----
-lcd.home();
-----
+`lcd.home();`
 
 ==== Paràmetres
 
@@ -308,10 +290,7 @@ Imprimeix text o números en la pantalla LCD. És una funció heretada del siste
 
 ==== Sintaxi
 
-[source, Arduino]
-----
-lcd.print(char|byte|int|long|string data, int base);
-----
+`lcd.print(char|byte|int|long|string data, int base);`
 
 ==== Paràmetres
 
@@ -376,10 +355,7 @@ Escriu un valor en la pantalla.
 
 ==== Sintaxi
 
-[source, Arduino]
-----
-lcd.write(uint8_t value);
-----
+`lcd.write(uint8_t value);`
 
 ==== Paràmetres
 
@@ -410,12 +386,9 @@ Apaga la pantalla ràpidament. Si la pantalla no té una opció per a encendre l
 
 ==== Sintaxi
 
-[source, Arduino]
-----
-lcd.noDisplay();
+`lcd.noDisplay();`
 
-lcd.off();
-----
+`lcd.off();`
 
 ==== Paràmetres
 
@@ -441,12 +414,9 @@ Encén la pantalla ràpidament. Si la pantalla no té una opció per a apagar la
 
 ==== Sintaxi
 
-[source, Arduino]
-----
-lcd.display();
+`lcd.display();`
 
-lcd.on();
-----
+`lcd.on();`
 
 ==== Paràmetres
 
@@ -473,10 +443,7 @@ bàner en moviment continu en una fila, especialment en un 1602 LCD.
 
 ==== Sintaxi
 
-[source, Arduino]
-----
-lcd.scrollDisplayLeft();
-----
+`lcd.scrollDisplayLeft();`
 
 ==== Paràmetres
 
@@ -503,10 +470,7 @@ bàner en moviment continu en una fila, especialment en un 1602 LCD.
 
 ==== Sintaxi
 
-[source, Arduino]
-----
-lcd.scrollDisplayRight();
-----
+`lcd.scrollDisplayRight();`
 
 ==== Paràmetres
 
@@ -523,19 +487,16 @@ lcd.scrollDisplayRight();
 
 ''''
 
-=== [#anchor-16]####[#anchor-17]####leftToRight() - rightToLeft()
+[#leftToRight]
+=== leftToRight()
 
 ==== Descripció
 
-Estableix el flux de text d'esquerra a dreta com és normal per als
-idiomes llatins. - Estableix el flux de text de dreta a esquerra com és
-normal en els idiomes àrabs.
+Estableix el flux de text d'esquerra a dreta com és normal per als idiomes llatins.
 
 ==== Sintaxi
 
-_lcd.leftToRight();_
-
-_lcd.rightToLeft();_
+`lcd.leftToRight();`
 
 ==== Paràmetres
 
@@ -545,18 +506,23 @@ _lcd.rightToLeft();_
 
 * Cap
 
-=== [#anchor-18]####[#anchor-19]####noAutoscroll() / autoscroll()
+==== Veure també
+
+* <<righToLeft, rightToLeft()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+[#rightToLeft]
+=== rightToLeft()
 
 ==== Descripció
 
-Justifica el text del cursor a l'esquerra. / Justifica el text del
-cursor a la dreta.
+Estableix el flux de text de dreta a esquerra com és normal en els idiomes àrabs.
 
 ==== Sintaxi
 
-_lcd.noAutoscroll();_
-
-_lcd.autoscroll();_
+`lcd.rightToLeft();`
 
 ==== Paràmetres
 
@@ -566,17 +532,23 @@ _lcd.autoscroll();_
 
 * Cap
 
-=== [#anchor-20]####[#anchor-21]####noBacklight() / [#anchor-22]####backlight()
+==== Veure també
+
+* <<leftToRight, leftToRight()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+[#noAutoscroll]
+=== noAutoscroll()
 
 ==== Descripció
 
-Apaga la llum de fons / Encén la llum de fons.
+Justifica el text del cursor a l'esquerra.
 
 ==== Sintaxi
 
-_lcd.noBacklight();_
-
-_lcd.backlight();_
+`lcd.noAutoscroll();`
 
 ==== Paràmetres
 
@@ -585,6 +557,89 @@ _lcd.backlight();_
 ==== Retorn
 
 * Cap
+
+==== Veure també
+
+* <<autoscroll, autoscroll()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+[#autoscroll]
+=== autoscroll()
+
+==== Descripció
+
+Justifica el text del cursor a la dreta.
+
+==== Sintaxi
+
+`lcd.autoscroll();`
+
+==== Paràmetres
+
+* Cap
+
+==== Retorn
+
+* Cap
+
+==== Veure també
+
+* <<noAutoscroll, noAutoscroll()>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+=== [#noBacklight]#noBacklight()#
+
+==== Descripció
+
+Apaga la llum de fons
+
+==== Sintaxi
+
+`lcd.noBacklight();`
+
+==== Paràmetres
+
+* Cap
+
+==== Retorn
+
+* Cap
+
+==== Veure també
+
+* <<backlight, backlight>>
+* <<Interfície, Tornar a interfície>>
+
+''''
+
+=== [#backlight]#backlight()#
+
+==== Descripció
+
+Apaga la llum de fons
+
+==== Sintaxi
+
+`lcd.noBacklight();`
+
+==== Paràmetres
+
+* Cap
+
+==== Retorn
+
+* Cap
+
+==== Veure també
+
+* <<noBacklight, noBacklight>>
+* <<Interfície, Tornar a interfície>>
+
+''''
 
 === [#anchor-23]####[#anchor-24]####noCursor() / [#anchor-25]####cursor()
 
