@@ -1,0 +1,11 @@
+= Adafruit Motor Shield V2
+CartroTech <cartrotech@gmail.com>; Q. Serrano
+
+:imagesdir: ./Images
+
+
+****
+Traducció de Adafruit Motor Shield V2 Created by lady ada 
+https://learn.adafruit.com/adafruit-motor-shield-v2-for-arduino
+****
+
