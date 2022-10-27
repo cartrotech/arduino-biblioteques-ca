@@ -142,3 +142,4 @@ Finalment, trenqueu un tros de capçalera de 2 pins i col·loqueu-lo al costat d
 
 == Instal·lació amb capçaleres per apilar
 
+Borrar aquest text
