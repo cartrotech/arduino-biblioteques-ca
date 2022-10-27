@@ -11,16 +11,16 @@ xinés.
 
 == Crèdits
 
-La reimplementación se ha inspirado y el crédito es para:
+La reimplementació s'ha inspirat i el crèdit és per a:
 
 * Mario H. atmega@xs4all.nl LiquidCrystal_I2C V2.0
-* Murray R. Van Luyn vanluynm@iinet.net.au modificacions para placa convertidora china I2C
+* Murray R. Van Luyn vanluynm@iinet.net.au modificacions per a placa convertidora china I2C
 
 == Dependencia
 
-La clase de biblioteca amplía la biblioteca del sistema Print e incluye los siguientes archivos de encabezado del sistema.
+La classe de biblioteca amplia la biblioteca del sistema Print i inclou els següents arxius d'encapçalat del sistema.
 
-* **inttypes.h:** conversiones de tipo entero. Este archivo de encabezado incluye las definiciones de enteros de ancho exacto y las amplía con funciones adicionales proporcionadas por la implementación.
+* **inttypes.h:** conversions de tipus sencer. Aquest arxiu d'encapçalat inclou les definicions d'enters d'ample exacte i les amplia amb funcions addicionals proporcionades per la implementació.
 * **Print.h:** Clase base que proporciona `print()` y `println()`.
 * **Wire.h:** biblioteca TWI/I2C para Arduino & Wiring.
 
