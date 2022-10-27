@@ -2,7 +2,7 @@
 CartroTech <cartrotech@gmail.com>; Q. Serrano
 
 :icons: image
-:iconsdir: ./icons
+:iconsdir: ./../../icons
 :imagesdir: ./Images
 
 ****
