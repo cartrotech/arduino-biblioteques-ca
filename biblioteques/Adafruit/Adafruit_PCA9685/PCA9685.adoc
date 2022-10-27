@@ -2,7 +2,8 @@
 Q. Serrano <qserrano@protonmail.com>
 
 :imagesdir: ./Images
-
+:icons: image
+:iconsdir: ./../../icons
 
 ****
 Traducció de Adafruit PCA9685 16-Channel Servo Driver By Bill Earl https://learn.adafruit.com/16-channel-pwm-servo-driver/library-reference?view=all
@@ -131,10 +132,8 @@ El controlador PWM/Servo utilitza I2C, de manera que només calen 4 cables per c
 * SCL -> SCL
 
 
-.ATENCIÓ
-****
-El pin VCC és només energia per al propi xip. Si voleu connectar servos o LED que utilitzen els pins V+, també HEU de connectar el pin V+. El pin V+ pot arribar a 6 V fins i tot si VCC és de 3,3 V (el xip és segur de 5 V). Suggerim connectar l'alimentació a través del bloc de terminals blau, ja que està protegit contra la polaritat.
-****
+WARNING: [red]#El pin VCC és només energia per al propi xip. Si voleu connectar servos o LED que utilitzen els pins V+, també HEU de connectar el pin V+. El pin V+ pot arribar a 6 V fins i tot si VCC és de 3,3 V (el xip és segur de 5 V). Suggerim connectar l'alimentació a través del bloc de terminals blau, ja que està protegit contra la polaritat.#
+
 
 == Alimentació per als servos
 
@@ -151,10 +150,7 @@ Les bones opcions de poder són:
 * Suport de piles 4xAA - 6v amb cèl·lules alcalines. 4,8 v amb cèl·lules recarregables NiMH.
 * Paquets de bateries RC recarregables de 4,8 o 6 V d'una botiga d'aficions.
 
-.ATENCIÓ
-****
-No és una bona idea utilitzar el pin Arduino 5v per alimentar els vostres servos. El soroll elèctric i els "apagats" de l'excés de consum de corrent poden fer que el vostre Arduino actuï de manera erràtica, es reiniciï i/o s'escalfi.
-****
+WARNING: [red]#No és una bona idea utilitzar el pin Arduino 5v per alimentar els vostres servos. El soroll elèctric i els "apagats" de l'excés de consum de corrent poden fer que el vostre Arduino actuï de manera erràtica, es reiniciï i/o s'escalfi.#
 
 == Connexió d'un servo
 
@@ -280,10 +276,7 @@ Utilitzant el codi d'exemple, editeu SERVOMIN fins que el punt baix de l'escombr
 
 De nou, utilitzant el codi d'exemple, editeu SERVOMAX fins que el punt més alt de l'escombrat arribi al rang màxim de recorregut. De nou, el millor és apropar-se a això gradualment i aturar-se abans que s'arribi al límit físic del viatge.
 
-.ATENCIÓ
-****
-Tingueu precaució quan ajusteu SERVOMIN i SERVOMAX. Assolir els límits físics del viatge pot treure els engranatges i danyar permanentment el vostre servo.
-****
+WARNING: [red]#Tingueu precaució quan ajusteu SERVOMIN i SERVOMAX. Assolir els límits físics del viatge pot treure els engranatges i danyar permanentment el vostre servo.#
 
 == Conversió de graus a longitud de pols
 
