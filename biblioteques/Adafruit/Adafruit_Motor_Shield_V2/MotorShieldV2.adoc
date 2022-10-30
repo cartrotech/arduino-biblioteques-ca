@@ -142,4 +142,25 @@ Finalment, trenqueu un tros de capçalera de 2 pins i col·loqueu-lo al costat d
 
 == Instal·lació amb capçaleres per apilar
 
-Borrar aquest text
+image::25.png[200,200,align="center"]
+
+Haurà de comprar encapçalats d'apilament Arduino per a aquest pas, l'escut no ve amb ells.
+
+WARNING: [red]#No mostrem la soldadura en l'encapçalat d'apilament de 2x3, però també ha de soldar-ho; encara que aquest escut no l'usa, el de dalt pot necessitar aqueixos pins!#
+
+image::26.png[200,200,align="center"]
+
+Comence lliscant els capçals d'apilament de 10 pins, 2 x 8 pins i 6 pins en les files exteriors de l'escut des de la part superior. Després voltege el tauler perquè descanse sobre els quatre encapçalats. Tire dels pins si és necessari per a redreçar-los.
+
+image::27.png[200,200,align="center"]
+
+Soldar un pin de cada encapçalat per a col·locar-los en el seu lloc abans de soldar més. Si els encapçalats es torcen, pot tornar a calfar el pin mentre els torna a col·locar per a redreçar-los.
+
+image::30.png[200,200,align="center"]
+
+Una vegada que haja fixat i redreçat tots els blocs d'encapçalats, torne i solde els pins restants per a cada bloc.
+
+== Instal·lació del software
+
+=== Instal·lar Adafruit Motor Shield V2 library
+
