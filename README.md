@@ -4,8 +4,8 @@ Traducció al català/valencià de biblioteques d'arduino.
 
 ## Adafruit
 
-- [Adafruit_PCA9685](biblioteques/Adafruit/Adafruit_PCA9685/PCA9685.adoc)
+- [Adafruit_PCA9685](biblioteques/Adafruit/Adafruit_PCA9685/PCA9685.md)
 
 ## Arduino
 
-- [LyquidCrystal_I2C](biblioteques/Arduino/LiquidCrystal_I2C.adoc)
+- [LyquidCrystal_I2C](biblioteques/Arduino/LiquidCrystal_I2C.md)
