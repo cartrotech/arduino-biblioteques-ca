@@ -272,3 +272,9 @@ i solde els pins restants per a cada bloc.
 ## Instal·lació del software
 
 ### Instal·lar Adafruit Motor Shield V2 library
+
+Per a usar l'escut en un Arduino, haurà d'instal·lar la biblioteca Adafruit Motorshield v2. Aquesta biblioteca no és compatible amb la biblioteca AF_Motor anterior que s'utilitza per als escuts v1. No obstant això, si té un codi per a l'escut anterior, no és difícil adaptar el codi per a usar l'escut nou. Vam haver de canviar una mica la interfície per a admetre l'apilament d'escuts, i creiem que val la pena!
+
+Per a començar a controlar motors, haurà d'instal·lar la [biblioteca Adafruit_Motor_Shield_V2_Library](https://github.com/ladyada/Adafruit_Motor_Shield_V2_Library) (codi en el nostre repositori de github). Està disponible en l'administrador de la biblioteca Arduino, per la qual cosa recomanem usar-lo.
+
+Des del IDE, òbriga l'administrador de la biblioteca...
