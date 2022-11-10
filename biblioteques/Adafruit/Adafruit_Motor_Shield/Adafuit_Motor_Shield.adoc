@@ -1,0 +1,176 @@
+= Adafruit Motor Shield
+CartroTech <cartrotech@gmail.com>; Q. Serrano
+
+:icons: image
+:iconsdir: ./../../icons
+:imagesdir: ./Images
+
+****
+Traducció de Adafruit Motor Shield Created by lady ada 
+https://learn.adafruit.com/adafruit-motor-shield
+****
+image::1.png[align="center"]
+
+== Visió general
+
+Arduino és un gran punt de partida per a l'electrònica, i amb un controlador de motors també pot ser una bona plataforma ordenada per a la robòtica i la mecatrònica. Ací hi ha un disseny per a un controlador de motors amb totes les funcions que li permetrà crear molts projectes de complexitat simple a mitjana.
+
+*2 connexions per a servos de 5V connectats al PWM dedicat d'alta resolució d'Arduino - sense fluctuacions!
+* Fins a 4 motors de CC bidireccionals amb selecció de velocitat individual de 8 bits (per tant, aproximadament 0,5% de resolució)
+* Fins a 2 motors pas a pas (unipolars o bipolars) amb bobina simple, bobina doble, intercalats o micropassos.
+* 4 ponts H: el conjunt de xips L293D proporciona 0,6A Per pont (pic de 1,2 A) amb protecció de desconexió tèrmica, 4,5 V a 25 V
+* Les resistències "pull down" mantenen els motors desactivats durant l'arranc
+* Grans connectors de bloc de terminals per a connectar fàcilment cables (10-22 AWG) i alimentació
+* El botó de reinici d'Arduino apareix en la part superior
+* Bloc de terminals de 2 pins per a connectar alimentació externa, per a separar subministraments de lògica/motor
+* Provat compatible amb Mega, Diecimila i Duemilanove
+* http://adafruit.com/products/81[Kit complet disponible per a comprar a la botiga d'Adafruit].
+* http://learn.adafruit.com/adafruit-motor-shield/downloads[Descarregue les biblioteques de programari Arduino fàcils d'usar i estarà llest per a començar!]
+
+image::2.png[align="center"]
+
+== FAQ
+
+❓ *Quants motors puc usar amb aquest escut?*
+
+Pot usar 2 servos de CC que funcionen amb 5 V i fins a 4 motors de CC o 2 motors pas a pas (o 1 pas a pas i fins a 2 motors de CC)
+
+❓ *Puc connectar més motors?*
+
+No, en aquest moment no és possible apilar l'escut o connectar-lo fàcilment per a controlar 4 motors de passos, per exemple.
+
+❓ *AJUDA! El meu motor no funciona! - AJUDA! El meu motor no funciona!... Però els servos funcionen BÉ!*
+
+Està encés el LED? Les connexions del motor pas a pas i de CC no faran res si el LED no està encés
+
+No es moleste a escriure el codi de càrrega o connectar els motors si el LED no s'encén, no funcionarà.
+
+❓ *Per a què serveix el LED?*
+
+El LED indica que la font d'alimentació del motor pas a pas/CC està funcionant. Si no està encés, els motors de CC/pas a pas no funcionaran. Els ports de servo tenen alimentació de 5 V i no utilitzen el subministrament del motor de CC.
+
+❓ *Estic tractant de construir aquest robot i no sembla funcionar amb una bateria de 9V....*
+
+Llija el http://learn.adafruit.com/adafruit-motor-shield/use-it[manual de l'usuari] per a obtindre informació sobre les fonts d'alimentació adequades.
+
+❓ *Pot aquest escut controlar xicotets motors de 3V?*
+
+En realitat no, està dissenyat per a motors més grans de 6V+. No funciona per a motors de 3V llevat que els sobrecarregue a 6V i després es cremaran més ràpid
+
+❓ *Per a què serveix el connector d'alimentació del controlador? Com alimente els meus motors?*
+
+Llija el http://learn.adafruit.com/adafruit-motor-shield/use-it[manual de l'usuari] per a obtindre informació sobre les fonts d'alimentació adequades.
+
+❓ *El meu Arduino s'inicia quan els motors estan funcionant! Està trencat l'escut?*
+
+Els motors consumeixen molta energia i poden causar "caigudes de tensió" que restableixen l'Arduino. Per aqueixa raó, el controlador està dissenyat per a subministraments separats (dividits), un per a l'electrònica i un altre per al motor. Fer això evitarà caigudes de tensió. Llija el http://learn.adafruit.com/adafruit-motor-shield/use-it[manual de l'usuari] per a obtindre informació sobre les fonts d'alimentació adequades.
+
+❓ *Tinc bones fonts d'alimentació sòlides, però els motors de CC semblen 'tallar-se' o 'saltar'.*
+
+Intente soldar un condensador de ceràmica o de disc de 0.1uF entre les pestanyes del motor (en el motor mateix!) Això reduirà el soroll que podria estar retroalimentant al circuit (http://forums.adafruit.com/viewtopic.php?f=31&t=10290[gràcies macegr!])
+
+❓ *Què succeeix si necessite més de 600mA per motor?*
+
+http://learn.adafruit.com/adafruit-motor-shield/use-it[Pot substituir l'SN754410 (sota la seua responsabilitat) o soldar alguns controladors L293D més damunt dels existents.]
+
+❓ *Quins pins no s'utilitzen en l'escut del motor?*
+
+Els 6 pins d'entrada analògica estan disponibles. També es poden usar com a pins digitals (pins del núm. 14 al 19)
+
+Els pins digitals 2 i 13 no s'utilitzen.
+
+Els següents pins estan en ús sol si el CC/pas a pas indicat està en ús:
+
+* Pin digital 11: Motor CC núm. 1 / Pas a pas núm. 1 (activació/control de velocitat)
+* Pin digital 3: Motor CC núm. 2 / Pas a pas núm. 1 (activació/control de velocitat)
+* Pin digital 5: Motor CC núm. 3 / Pas a pas núm. 2 (activació/control de velocitat)
+* Pin digital 6: Motor CC núm. 4 / Pas a pas núm. 2 (activació/control de velocitat)
+
+Els següents pins estan en ús si s'usen DC/steppers
+
+* Els pins digitals 4, 7, 8 i 12 s'utilitzen per a impulsar els motors de CC/pas a pas a través del pestell de sèrie a paral·lel del 74HC595
+
+Els següents pins s'usen només si aqueix servo en particular està en ús:
+
+* Pin digital 9: control del servo núm. 1
+* Pin digital 10: control del servo núm. 2
+
+❓ *Quins pins estan connectats als motors de CC/pas a pas?*
+
+Els motors de CC/pas a pas NO estan connectats directament a l'Arduino. Estan connectats al integrat 74HC595 al qual es comunica l'Arduino. NO POT parlar directament amb els motors, HA D'usar la biblioteca de protecció del motor.
+
+❓ *Eh? No entenc...*
+
+http://docs.google.com/View?docid=dgwf6cmm_2fznx7qgr[Pots intentar llegir aquest agradable resum escrit per Michael K.]
+
+❓ *Com puc connectar-me als pins no utilitzats?*
+
+Els pins analògics (analògics 0-5, també coneguts com a pins digitals 14-19) es desglossen a la cantonada inferior dreta.
+
+El pin 2 té una conexió habilitada ja que és l'únic pin veritablement sense usar
+
+Els pins restants no es trenquen perquè podrien ser utilitzats per l'escut del motor. Si està segur que no està usant aqueixos pins, pot connectar-los usant encapçalats d'apilament en assemblar el kit o soldant en la part superior de l'encapçalat amb cables, o usant un "Wing shield".
+
+❓ *Rebo el següent error en intentar executar el codi d'exemple: "error: AFMotor.h: No such file or directory..."*
+
+Assegure's d'haver instal·lat la biblioteca AFMotor
+
+❓ *Com instal·le la biblioteca?*
+
+http://learn.adafruit.com/arduino-tips-tricks-and-techniques/arduino-libraries[Llija el nostre tutorial sobre biblioteques]
+
+❓ Tinc dos motors pas a pas i vull fer-los funcionar simultàniament, però el codi d'exemple només pot controlar un i després l'altre.
+
+La rutina step() de la biblioteca de motors pas a pas no té la capacitat de fer funcionar tots dos motors alhora. En el seu lloc, haurà de 'intercalar' les crides. Per exemple, perquè tots dos motors avancen 100 vegades, ha d'escriure un codi com aquest:
+
+[source, Arduino]
+----
+per a (i=0; i<100; i++) {
+motor1.step(1, AVANCE, SIMPLE);
+motor2.step(1, AVANCE, SIMPLE);
+}
+----
+
+Si desitja un control més intel·ligent, consulte la biblioteca AccelStepper (en la secció Descàrregues) que té alguns exemples de control de motors pas a pas simultanis
+
+❓ *Quins són alguns 'motors suggerits'?*
+
+La majoria de la gent compra motors en botigues d'excedents i no tots els motors seràn adequats.
+
+No obstant això, atés que és una pregunta popular, suggerisc comprar motors de Pololu (Servos de CC, motors de CC) o Jameco (de tota mena!) A més de les moltes botigues web excedents.
+
+❓ *El motor shield és compatible amb UN R3 o Mega R3? Què passa amb els pins addicionals?*
+
+El controlador és compatible amb el UNO R3 i MEGA. Els R3 tenen 2 pins addicionals en cada encapçalat. Aquests són duplicats d'altres pins en l'encapçalat i no són necessaris per al controlador.
+
+❓ *Estic usant una plataforma de robot 4WD i no puc fer que res funcione.*
+
+Els motors utilitzats en les plataformes robòtiques 4WD de Maker Shed, DF Robotics, Jameco i altres tenen molt "soroll de raspall". Això retroalimenta el circuit Arduino i provoca un funcionament inestable. Aquest problema es pot solucionar soldant 3 condensadors de supressió de soroll al motor. 1 entre els terminals del motor, i un de cada terminal a la carcassa del motor.
+
+image::3.png[align="center"]
+
+❓ *Però el meu motor ja té un condensador i segueix sense funcionar.*
+
+Aquests motors generen molt soroll d'escombretes i, en general, necessiten l'efecte complet de 3 capacitores per a una supressió adequada.
+
+❓ *Per què no simplement es dissenya condensadors en la placa?*
+
+No serien efectius allí. El soroll ha de suprimir-se en la font o els cables del motor actuaran com a antenes i el transmetran a la resta del sistema.
+
+== Library install
+
+== Power usage
+
+== Using RC servos
+
+== Using Stepper Motors
+
+== Using DC Motors
+
+== AF_DCMotor Class
+
+== AF_Stepper Class
+
+== Resources
+
+== Downloads
