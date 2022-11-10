@@ -157,9 +157,63 @@ Aquests motors generen molt soroll d'escombretes i, en general, necessiten l'efe
 
 No serien efectius allí. El soroll ha de suprimir-se en la font o els cables del motor actuaran com a antenes i el transmetran a la resta del sistema.
 
-== Library install
+== Instal·lació de la biblioqueca
 
-== Power usage
+=== Primer instal·le la biblioteca Arduino
+
+Abans que puga usar el controlador de motors, ha d'instal·lar la biblioteca AF_Motor Arduino; això li indicarà a l'Arduino com parlar amb el controlador Adafruit, i no és opcional!
+
+Òbriga l'administrador de la biblioteca Arduino:
+
+image::4.png[align="center"]
+
+Busque la biblioteca Adafruit Motor i instal·le-la. Assegure's que siga la biblioteca per a l'escut del motor V1.
+
+image::5.png[align="center"]
+
+També tenim un excel·lent tutorial sobre la instal·lació de la biblioteca Arduino en:
+http://learn.adafruit.com/adafruit-all-about-arduino-libraries-install-use
+
+== Alimentant el circuit
+
+=== Alimentació dels motors de CC, requisits de voltatge i corrent
+
+Els motors necessiten molta energia, especialment els motors barats, ja que són menys eficients. El primer important és esbrinar quin voltatge usarà el motor. Si té sort, el seu motor va vindre amb alguna mena d'especificacions. Alguns motors xicotets per a passatemps només estan dissenyats per a funcionar a 1,5 V, però és igual de comú tindre motors de 6-12 V. Els controladors de motor d'aquest protector estan dissenyats per a funcionar de 4,5 V a 25 V.
+
+NOTE: LA MAJORIA DELS MOTORS D'1.5-3V NO FUNCIONARAN
+
+*Requisits de corrent:* el segon que ha d'esbrinar és quanta corrent necessitarà el seu motor. Els xips de controlador de motor que venen amb el kit estan dissenyats per a proporcionar fins a 600 mA per motor, amb un corrent màxim de 1,2 A. Tinga en compte que una vegada que es dirigisca cap a 1A, probablement voldrà col·locar un dissipador de calor en el controlador del motor; en cas contrari, tindrà una falla tèrmica, possiblement cremant el xip.
+
+*Sobre l'ús del SN754410:* Algunes persones usen el xip controlador de motor SN754410 perquè és compatible amb pins, té díodes d'eixida i pot proporcionar 1A per motor, 2A pic. Després d'una lectura acurada de la fulla de dades i la discussió amb el suport tècnic de TI i els enginyers d'energia, sembla que els díodes d'eixida van ser dissenyats només per a protecció ESD i que usar-los com a protecció contra retorns és un truc i no es garanteix el rendiment. Per aqueixa raó, el kit no ve amb l'SN754410 i en el seu lloc usa el L293D amb díodes integrats de protecció contra retorns. Si està disposat a arriscar-se i necessita corrent addicional, no dubte a comprar SN754410 i reemplaçar els xips proporcionats.
+
+*Necessites més potència?* Compre un altre joc de controladors L293D i soldeu-los just damunt dels que estan en la placa (piggyback). Així, duplica la capacitat actual! Pot soldar 2 xips més en la part superior però que probablement no obté molts beneficis
+
+*No pot fer funcionar els motors amb una bateria de 9 V, així que ni tan sols perda el seu temps/bateries!* Utilitze una bateria gran de plom àcid o NiMH. També es recomana encaridament que configure dues fonts d'alimentació (subministrament dividit), una per a Arduino i una altra per als motors. El 99% dels 'problemes estranys del motor' es deuen al soroll en la línia d'alimentació per compartir fonts d'alimentació i/o no tindre una font prou potent!
+
+=== Com configurar Arduino + Shield per a alimentar motors
+
+Els servos s'alimenten amb els mateixos 5V regulats que usa l'Arduino. Això està bé per als xicotets servos d'hobby suggerits. Si vol una mica més robust, talle el rastre que va a + en els connectors del servo i connecte el seu propi subministrament de 5-6V.
+
+Els motors de CC s'alimenten d'un 'subministrament d'alt voltatge' i NO dels 5V regulats. No connecte la font d'alimentació del motor a la línia de 5V. Aquesta és una molt, molt, molt mala idea llevat que estigues segur que saps el que estàs fent!
+
+Hi ha dos llocs des d'on pot obtindre el 'subministrament d'alt voltatge' del seu motor. Un és el connector de CC en la placa Arduino i l'altre és el bloc de 2 terminals en el controlador que està etiquetat com EXT_PWR. El DC Jack en l'Arduino té un díode de protecció, per la qual cosa no podrà desbaratar massa les coses si connecta el tipus d'alimentació incorrecte. No obstant això, els terminals EXT_PWR en l'escut no tenen un díode de protecció (per una bona raó). Tingues molta cura de no endollar-lo a l'inrevés o destruiràs el protector del motor i/o el teu Arduino!
+
+Així és com funciona:
+
+image::6.png[align="center"]
+
+Si desitja tindre una sola font d'alimentació de CC per a l'Arduino i els motors, simplement connecte-la al connector de CC de l'Arduino o al bloc PWR_EXT de 2 pins en l'escut. Col·loque el pont d'alimentació en el protector del motor.
+
+Si té un Arduino Diecimila, configure el pont de la font d'alimentació d'Arduino en EXT.
+Tinga en compte que pot tindre problemes amb els reinicis d'Arduino si el subministrament de la bateria no pot proporcionar energia constant, i no és una forma suggerida d'alimentar el seu projecte de motor.
+
+Si desitja que l'Arduino s'alimente amb USB i els motors s'alimenten amb una font d'alimentació de CC, connecte el cable USB. Després connecte el subministrament del motor al bloc PWR_EXT en l'escut. No col·loque el pont en l'escut. Aquest és un mètode suggerit per a alimentar el seu projecte de motor
+(Si té un Arduino Diecimila, no oblide configurar el pont d'alimentació d'Arduino en USB. Si té un Diecimila, alternativament pot fer el següent: connecte la font d'alimentació de CC a l'Arduino i col·loque el pont en el motor escut.)
+
+Si desitja tindre 2 fonts d'alimentació de CC separades per a Arduino i motors. Endolle el subministrament per a l'Arduino en el connector de CC i connecte el subministrament del motor al bloc PWR_EXT. Assegure's de llevar el pont del protector del motor.
+Si té un Arduino Diecimila, configure el pont Arduino en EXT. Aquest és un mètode suggerit per a alimentar el seu projecte de motor
+
+De qualsevol manera, si desitja utilitzar el motor de CC/pas a pas, el LED del protector del motor ha d'estar encés per a indicar una bona potència del motor.
 
 == Using RC servos
 
