@@ -215,7 +215,19 @@ Si té un Arduino Diecimila, configure el pont Arduino en EXT. Aquest és un mè
 
 De qualsevol manera, si desitja utilitzar el motor de CC/pas a pas, el LED del protector del motor ha d'estar encés per a indicar una bona potència del motor.
 
-== Using RC servos
+== Ús de servos RC
+
+image::7.png[align="center"]
+
+Els servos són la forma més fàcil de començar amb el control del motor. Tenen una connexió de capçal femella de 3 pins de 0,1" amb +5 V, terra i entrada de senyal. El protector del motor simplement trau les línies d'eixida PWM de 16 bits a dos capçals de 3 pins perquè siga fàcil d'endollar i llest. Poden consumir molta energia, per la qual cosa una bateria de 9V no durarà més d'uns minuts!
+
+El que té de bo usar el PWM integrat és que és molt precís i fa el seu treball en segon pla. Pot usar la biblioteca Servo incorporada
+
+http://www.arduino.cc/en/Reference/Servo[Usar els servos és fàcil, llija la documentació oficial d'Arduino per a saber com usar-los i veja els esbossos de servos d'exemple en l'IDE.]
+
+L'energia per als servos prové del regulador de 5 V integrat de l'Arduino, alimentat directament des del connector d'alimentació USB o CC de l'Arduino. Si necessita un subministrament extern, talle el rastre just davall dels pins del servo (en les plaques v1.2) i connecte un subministrament de CC de 5V o 6V directament. L'ús d'una font externa és per a usuaris avançats, ja que pot destruir accidentalment els servos en connectar una font d'alimentació incorrectament!
+
+WARNING: [red]#Quan utilitze el capçal de subministrament extern per a servos, vaja amb compte que la part inferior dels pins del capçal no entren en contacte amb la carcassa metàl·lica del port USB de l'Arduino. Un tros de cinta aïllant en la carcassa el protegirà contra curtcircuits.#
 
 == Using Stepper Motors
 
