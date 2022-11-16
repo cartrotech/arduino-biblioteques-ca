@@ -414,6 +414,105 @@ motor.run(BACKWARDS);  // run in reverse
 
 == AF_Stepper Class
 
+image::12.png[align="center"]
+
+La classe AF_Stepper proporciona control d'un o diversos passos per a fins a 2 motors pas a pas quan s'usa amb Adafruit Motor Shield. Per a usar això en un esbós, primer ha d'agregar la següent línia al començament del seu esbós:
+
+[source, Arduino]
+----
+#include <AFMotor.h>
+----
+
+=== AF_Stepper steppername(steps, portnumber)
+
+El constructor AF_Stepper defineix un motor pas a pas. Crida'l una vegada per cada motor pas a pas en el seu esbós. Cada instància de motor pas a pas ha de tindre un nom únic com en l'exemple a continuació.
+
+Paràmetres:
+
+* *steps*: declare el nombre de passos per revolució per al seu motor.
+* *portnum*: declara com es connectarà el motor a l'escut.
+** Els valors vàlids per a 'portnum' són 1 (canals 1 i 2) i 2 (canals 3 i 4).
+
+Exemple:
+
+image::11.png[align="center"]
+
+[source, Arduino]
+----
+AF_Stepper Stepper1(48, 1);  // A 48-step-per-revolution motor on channels 1 & 2
+AF_Stepper Stepper2(200, 2);   // A 200-step-per-revolution motor on channels 3 & 4
+----
+
+=== step(steps, direction, style)
+
+Mou el motor.
+
+Paràmetres:
+
+* *steps* - el nombre de passos per a girar
+* *direction* - la direcció de rotació (FORWARD o BACKWARD)
+* *style* - l'estil de treball. Els valors vàlids per a 'estil' són:
+** SINGLE: s'activa una bobina alhora.
+** DOUBLE: s'energitzen dues bobines alhora per a obtindre més par.
+** INTERLEAVE: alterna entre simple i doble per a crear un mig pas. Això pot resultar en una operació més suau, però a causa del mig pas addicional, la velocitat també es redueix a la meitat.
+** MICROSTEP: les bobines adjacents augmenten i disminueixen per a crear una sèrie de "micropassos" entre cada pas complet. Això dona com a resultat una resolució més fina i una rotació més suau, però amb una pèrdua de parell.
+
+NOTE: Step és un comando síncrono i no tornarà fins que s'hagen completat tots els passos. Per al moviment simultani de dos motors, ha de manejar el temps de pas per a tots dos motors i usar la funció "onestep()" a continuació.
+
+[source, Arduino]
+----
+Stepper1.step(100, FORWARD, DOUBLE); // 100 steps forward using double coil stepping
+Stepper2.step(100, BACKWARD, MICROSTEP);   // 100 steps backward using double microstepping
+----
+
+=== setSpeed(RPMspeed)
+
+Establir la velocitat del motor
+
+Paràmetres:
+
+* *RPMspeed* - la velocitat en RPM
+
+NOTE: La velocitat de pas resultant es basa en el paràmetre 'steps' del constructor. Si això no coincideix amb el nombre de passos del seu motor, la seua velocitat real també estarà desactivada.
+
+Exemple:
+
+[source, Arduino]
+----
+Stepper1.setSpeed(10);  // Set motor 1 speed to 10 rpm  
+Stepper2.setSpeed(30);  // Set motor 2 speed to 30 rpm
+----
+
+=== onestep(direction, stepstyle)
+
+Un únic pas per al motor
+
+Paràmetres:
+
+* *direction* - la direcció de rotació (FORWARD -CAP AVANT- o BACKWARD -CAP ENDARRERE-)
+* *stepstyle* - l'estil de pas. Els valors vàlids per a 'estil' són:
+** SINGLE: s'activa una bobina alhora.
+** INTERLEAVE: alterna entre simple i doble per a crear un mig pas. Això pot resultar en una operació més suau, però a causa del mig pas addicional, la velocitat també es redueix a la meitat.
+** MICROSTEP: les bobines adjacents augmenten i disminueixen per a crear una sèrie de "micropassos" entre cada pas complet. Això dona com a resultat una resolució més fina i una rotació més suau, però amb una pèrdua de parell.
+
+Exemple:
+
+[source, Arduino]
+----
+Stepper1.onestep(FORWARD, DOUBLE);  // take one step forward using double coil stepping
+----
+
+=== release()
+
+Allibera el parell de retenció en el motor. Això redueix la demanda de corrent, però el motor no frenarà la rotació.
+
+Exemple
+
+[source, Arduino]
+----
+Stepper1.release(); // stop rotation and turn off holding torque.
+----
+
 == Resources
 
 == Downloads
