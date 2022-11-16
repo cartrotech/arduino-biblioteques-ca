@@ -513,6 +513,10 @@ Exemple
 Stepper1.release(); // stop rotation and turn off holding torque.
 ----
 
-== Resources
+== Recursos
 
-== Downloads
+== Idees i tutorials per a motors
+
+* http://en.wikipedia.org/wiki/Stepper_motor[Wikipedia té tones d'informació sobre steppers]
+* http://www.cs.uiowa.edu/~jones/step/types.html[Tipus de motors pas a pas per Jones]
+* http://www.jasonbabcock.com/computing/breadboard/unipolar/index.html[Enginyeria inversa dels pinouts dels cables pas a pas per Jason]
